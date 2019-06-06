@@ -10,9 +10,19 @@ import java.io.FileNotFoundException;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test (expected = FileNotFoundException.class)
-    public void testAppHasAGreeting() {
+
+    @Test
+    public void testRandomQuote_pass() throws FileNotFoundException {
         App classUnderTest = new App();
-        assertNotNull("should return random user quote", classUnderTest.randomQuote("src/main/resources/quoteData.txt"));
+        User expectedOutput = classUnderTest.randomQuote("src/main/resources/quoteData.txt");
+        assertNotNull("should return random user quote", expectedOutput);
     }
+
+    @Test (expected = FileNotFoundException.class)
+    public void testRandomQuote_expectFailBadPath() throws FileNotFoundException{
+        App classUnderTest = new App();
+        assertNull("should fail",classUnderTest.randomQuote("../resources/quoteData.txt"));
+    }
+
+    //throw bad filename into function
 }

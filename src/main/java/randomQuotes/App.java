@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.Random;
 
 
@@ -27,9 +28,12 @@ public class App {
 
         User[] users = gson.fromJson(bufferedReader, User[].class);
 
-        Random rand = new Random();
-        int i = rand.nextInt(users.length);
+        return users[randomNumber(users)];
+    }
 
-        return users[i];
+    public static int randomNumber(User[] arr){
+        Random rand = new Random();
+        int i = rand.nextInt(arr.length);
+        return i;
     }
 }
