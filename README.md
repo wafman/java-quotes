@@ -21,4 +21,7 @@
   - run the App.java
   - should return a random quote in the text box
 - from Command Line
-  - ```./gradlew run```
+  - test
+    - ```./gradlew test```
+  - run
+    - ```./gradlew run```

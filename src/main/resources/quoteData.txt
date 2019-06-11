@@ -716,5 +716,9 @@
   {
     "quote": "Tyrion",
     "character": "You love your children. It\u0027s your one redeeming quality - that, and your cheekbones."
+  },
+  {
+    "quote": "Bran",
+    "character": "Men live their lives trapped in an eternal present, between the mists of memory and the sea of shadow that is all we know of the days to come."
   }
 ]
