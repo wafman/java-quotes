@@ -6,23 +6,56 @@ package randomQuotes;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
 public class AppTest {
 
     @Test
-    public void testRandomQuote_pass() throws FileNotFoundException {
+    public void testRandomQuoteFile()  {
         App classUnderTest = new App();
-        User expectedOutput = classUnderTest.randomQuote("src/main/resources/quoteData.txt");
+        String expectedOutput = classUnderTest.randomQuoteFile();
         assertNotNull("should return random user quote", expectedOutput);
     }
 
-    @Test (expected = FileNotFoundException.class)
-    public void testRandomQuote_expectFailBadPath() throws FileNotFoundException{
+    @Test
+    public void testRandomNumber() {
         App classUnderTest = new App();
-        assertNull("should fail",classUnderTest.randomQuote("../resources/quoteData.txt"));
+        User user1 = new User("william", "1", "this is a test");
+        User user2 = new User("Jack Sparrow", "180", "why is the rum always gone");
+        User[] arr = new User[]{user1, user2};
+        int t1 = 0;
+        for(int i = 0; i < 100000; i++){
+            if(classUnderTest.randomNumber(arr) == 0){
+                t1++;
+            }
+        }
+        assertEquals("shouldnt deviate too much", 50000, t1, 500);
     }
 
-    //throw bad filename into function
+    @Test
+    public void testRandomQuote(){
+        App classUnderTest = new App();
+        String expectedOutPut = classUnderTest.randomQuote();
+        assertNotNull("should return a random quote from api", expectedOutPut);
+    }
+
+    @Test
+    public void testReadFile(){
+        App classUnderTest = new App();
+        User user = new User("House Stark", "Winter is coming");
+        ArrayList expectedOutput = classUnderTest.readFile(user);
+        assertNotNull(expectedOutput);
+    }
+
+//    @Test
+//    public void testWriteFile(){
+//        App classUnderTest = new App();
+//        User user1 = new User("william", "1", "this is a test");
+//        User user2 = new User("Jack Sparrow", "180", "why is the rum always gone");
+//        ArrayList<User> arr = new ArrayList<>(){user1, user2};
+//        assertNotNull(classUnderTest.writeFile(arr));
+//    }
+
 }
