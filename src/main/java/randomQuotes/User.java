@@ -1,6 +1,5 @@
 package randomQuotes;
 
-import java.util.ArrayList;
 
 public class User {
     private String author;
@@ -9,7 +8,7 @@ public class User {
     private String quote;
     private String character;
 
-    public User(String author, String text, String likes){
+    public User(String author, String likes, String text ){
         this.author = author;
         this.text = text;
         this.likes = likes;
@@ -18,8 +17,6 @@ public class User {
     public User(String quote, String character){
         this.quote = quote;
         this.character = character;
-        this.text = this.quote;
-        this.author = this.character;
     }
 
     //getters
@@ -37,7 +34,7 @@ public class User {
     }
 
     public String toString(){
-        return String.format("%s\n%s", this.author, this.text);
+        return String.format("%s\n%s\n%s", this.author, this.likes, this.text);
     }
 
 

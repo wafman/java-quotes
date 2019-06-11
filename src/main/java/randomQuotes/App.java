@@ -22,6 +22,7 @@ public class App {
     public static void main(String[] args) {
 
         System.out.println(randomQuote());
+//        System.out.println(randomQuoteFile());
 
     }
 
@@ -41,47 +42,67 @@ public class App {
             User newQuote = new User(gotQuote.getCharacter(), gotQuote.getQuote());
             String gotQuoteToJSON = iGson.toJson(newQuote);
 
-            //read file
-            JsonReader oldFile = new JsonReader(new FileReader("src/main/resources/quoteData.txt"));
-            ArrayList<User> quotes = new ArrayList<User>();
-            oldFile.beginArray();
-            while(oldFile.hasNext()){
-                User quote = iGson.fromJson(oldFile, User.class);
-                quotes.add(quote);
-            }
-            quotes.add(newQuote);
-            oldFile.endArray();
-            oldFile.close();
 
-
-            //write file
-            JsonWriter writer = new JsonWriter(new FileWriter("src/main/resources/quoteData.txt"));
-            writer.setIndent("  ");
-            writer.beginArray();
-            for(User quote: quotes){
-                iGson.toJson(quote, User.class, writer);
-            }
-            writer.endArray();
-            writer.close();
+            //read && write file
+            writeFile(readFile(newQuote));
 
             return gotQuote.toString_GoT();
 
         } catch (Exception e){
             System.out.println(e);
+            return randomQuoteFile();
+        }
+    }
 
-            try {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-                BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/quoteData.txt"));
-
-                User[] users = gson.fromJson(bufferedReader, User[].class);
-
-                return users[randomNumber(users)].toString();
-            } catch (FileNotFoundException err){
-                System.out.println(err);
-                User user = new User("House Stark", "Winter is coming");
-                return user.toString_GoT();
+    public static ArrayList readFile(User user){
+        try{
+            Gson gson = new Gson();
+            JsonReader oldFile = new JsonReader(new FileReader("src/main/resources/quoteData.txt"));
+            ArrayList<User> quotes = new ArrayList<>();
+            oldFile.beginArray();
+            while(oldFile.hasNext()){
+                User quote = gson.fromJson(oldFile, User.class);
+                quotes.add(quote);
             }
+            quotes.add(user);
+            oldFile.endArray();
+            oldFile.close();
+            return quotes;
+        } catch (IOException e){
+            System.out.println(e);
+            return new ArrayList();
+        }
+    }
+
+    public static void writeFile(ArrayList<User> arr){
+        try {
+            Gson gson = new Gson();
+            JsonWriter writer = new JsonWriter(new FileWriter("src/main/resources/quoteData.txt"));
+            writer.setIndent("  ");
+            writer.beginArray();
+            for(User quote: arr){
+                gson.toJson(quote, User.class, writer);
+            }
+            writer.endArray();
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    public static String randomQuoteFile(){
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/quoteData.txt"));
+
+            User[] users = gson.fromJson(bufferedReader, User[].class);
+
+            return users[randomNumber(users)].toString();
+        } catch (FileNotFoundException err){
+            System.out.println(err);
+            User user = new User("House Stark", "Winter is coming");
+            return user.toString_GoT();
         }
     }
 

@@ -690,9 +690,31 @@
     "likes": "0 likes"
   },
   {
-    "author": "Grand Maester Pycelle made that same joke. You must be proud to be as funny as a man whose balls brush his knees.",
-    "text": "Tyrion",
+    "quote": "Alayne",
+    "character": "In the game of thrones, even the humblest pieces can have wills of their own. Sometimes they refuse to make the moves you’ve planned for them. Mark that well, Alayne. It’s a lesson that Cersei Lannister still has yet to learn."
+  },
+  {
+    "quote": "Davos",
+    "character": "The fisherman drowned, but his daughter got Stark to the Sisters before the boat went down. They say he left her with a bag of silver and a bastard in her belly. Jon Snow, she named him, after Arryn."
+  },
+  {
+    "quote": "Cersei and Tyrion",
+    "character": "\u0027It\u0027s all fallen on me..\u0027, \u0027As has Jaime repeatedly, according to Stannis Baratheon.\u0027"
+  },
+  {
+    "quote": "Cersei and Tyrion",
+    "character": "\u0027It\u0027s all fallen on me..\u0027, \u0027As has Jaime repeatedly, according to Stannis Baratheon.\u0027"
+  },
+  {
+    "quote": "Olenna Tyrell",
+    "character": "A sword swallower, through and through."
+  },
+  {
+    "quote": "Littlefinger",
+    "character": "The whores are walking bowlegged."
+  },
+  {
     "quote": "Tyrion",
-    "character": "Grand Maester Pycelle made that same joke. You must be proud to be as funny as a man whose balls brush his knees."
+    "character": "You love your children. It\u0027s your one redeeming quality - that, and your cheekbones."
   }
 ]
