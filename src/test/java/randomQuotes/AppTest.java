@@ -12,14 +12,14 @@ import static org.junit.Assert.*;
 public class AppTest {
 
     @Test
-    public void testRandomQuote_pass() throws FileNotFoundException {
+    public void testRandomQuote_pass()  {
         App classUnderTest = new App();
         User expectedOutput = classUnderTest.randomQuote("src/main/resources/quoteData.txt");
         assertNotNull("should return random user quote", expectedOutput);
     }
 
-    @Test (expected = FileNotFoundException.class)
-    public void testRandomQuote_expectFailBadPath() throws FileNotFoundException{
+    @Test
+    public void testRandomQuote_expectFailBadPath() {
         App classUnderTest = new App();
         assertNull("should fail",classUnderTest.randomQuote("../resources/quoteData.txt"));
     }
